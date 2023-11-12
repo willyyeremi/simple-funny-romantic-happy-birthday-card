@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+    body {
+        margin: 0;
+        overflow: hidden;
+        background-color: #1e0033;
+    }
+
+    /* Defining the torch effect on mouse cursor */
+    #torch {
+        position: absolute;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: radial-gradient(circle, #230038 10%, transparent 95%);
+        mix-blend-mode: screen;
+        pointer-events: none;
+    }
+    </style>
+    <title>Mouse Torch Effect</title>
+</head>
+<body>
+    <div id="torch"></div>
+
+    <script>
+    // Script to determine the torch effect behavior
+    document.addEventListener("DOMContentLoaded", function () {
+        const torch = document.getElementById("torch");
+        
+        // Update torch position based on mouse cursor
+        document.addEventListener("mousemove", function (e) {
+        const x = e.clientX;
+        const y = e.clientY;
+        torch.style.transform = `translate(${x - 50}px, ${y - 50}px)`;
+        });
+
+        // Hide torch when mouse leaves the window
+        document.addEventListener("mouseleave", function () {  
+        torch.style.display = "none";
+        });
+
+        // Show torch when mouse enters the window
+        document.addEventListener("mouseenter", function () {
+        torch.style.display = "block";
+        });
+    });
+    </script>
+</body>
+</html>
